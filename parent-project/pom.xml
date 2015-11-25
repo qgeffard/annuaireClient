@@ -63,9 +63,8 @@
 	</dependencies>
 
 	<modules>
-		<module>client-proxy</module>
-		<module>annuaireClient</module>
-		<module>annuaireContext</module>
+		<module>annuaireService</module>
+		<module>contextManager</module>
     	<module>dynProxy</module>
   </modules>
 </project>
