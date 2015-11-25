@@ -66,6 +66,6 @@
 		<module>client-proxy</module>
 		<module>annuaireClient</module>
 		<module>annuaireContext</module>
-    <module>annuaireClientProxyClient</module>
+    	<module>dynProxy</module>
   </modules>
 </project>
