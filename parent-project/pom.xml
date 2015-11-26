@@ -66,5 +66,6 @@
 		<module>annuaireService</module>
 		<module>contextManager</module>
     	<module>dynProxy</module>
-  </modules>
+    	<module>clientEntity</module>
+	</modules>
 </project>
