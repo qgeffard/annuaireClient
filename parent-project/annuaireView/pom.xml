@@ -30,6 +30,12 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>org.sales.amd.cc</groupId>
+			<artifactId>clientEntity</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+		
+		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
 			<version>1.1.3</version>
@@ -59,6 +65,12 @@
 			<groupId>com.fasterxml.jackson.jaxrs</groupId>
 			<artifactId>jackson-jaxrs-json-provider</artifactId>
 			<version>2.6.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.sales.amd.cc</groupId>
+			<artifactId>contextManager</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 
 	</dependencies>

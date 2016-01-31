@@ -14,12 +14,6 @@ public class Client {
 		this.email = email;
 	}
 
-	@Override
-	public String toString() {
-		return "Client [name=" + name + ", enterprise=" + enterprise
-				+ ", email=" + email + "]";
-	}
-
 	public String getEnterprise() {
 		return enterprise;
 	}
@@ -43,4 +37,19 @@ public class Client {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Client [name=");
+		builder.append(name);
+		builder.append(", enterprise=");
+		builder.append(enterprise);
+		builder.append(", email=");
+		builder.append(email);
+		builder.append("]");
+		return builder.toString();
+	}
+	
+	
 }

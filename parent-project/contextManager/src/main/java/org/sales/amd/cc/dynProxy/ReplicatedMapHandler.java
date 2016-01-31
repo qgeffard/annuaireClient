@@ -4,18 +4,18 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-public class MyInvocationHandler implements InvocationHandler {
+public class ReplicatedMapHandler implements InvocationHandler {
 
 	 private Object obj;
 
 	    public static Object newInstance(Object obj) {
 	        return java.lang.reflect.Proxy.newProxyInstance(
 	            obj.getClass().getClassLoader(),
-	            obj.getClass().getInterfaces(),
-	            new MyInvocationHandler(obj));
+	            obj.getClass().getSuperclass().getInterfaces(),
+	            new ReplicatedMapHandler(obj));
 	    }
 
-	    private MyInvocationHandler(Object obj) {
+	    private ReplicatedMapHandler(Object obj) {
 	        this.obj = obj;
 	    }
 
