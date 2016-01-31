@@ -8,10 +8,10 @@
 		<artifactId>parent-project</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>dynProxy</artifactId>
+	<artifactId>annuaireView</artifactId>
 	<packaging>war</packaging>
 
-	<name>proxyClient</name>
+	<name>annuaireView</name>
 	<url>http://maven.apache.org</url>
 
 	<build>
