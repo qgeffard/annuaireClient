@@ -15,8 +15,9 @@ import org.slf4j.LoggerFactory;
 
 public class ContextManager extends Thread {
 	static Logger logger = LoggerFactory.getLogger(ContextManager.class);
+	private static Map<String, Client> unproxifiedContext = new ReplicatedMap<String, Client>();
 	private static Map<String, Client> context = (Map<String, Client>) ReplicatedMapHandler
-			.newInstance(new ReplicatedMap<String, Client>());
+			.newInstance(unproxifiedContext);
 	private static boolean started = false;
 	private static UUID myUUID = UUID.randomUUID();
 	private static MulticastSocket ms = null;
@@ -55,8 +56,10 @@ public class ContextManager extends Thread {
 				if (!(e instanceof SocketTimeoutException))
 					e.printStackTrace();
 			}
-			if (p.getAddress() != null) // on a reçu un message
+			if (p.getAddress() != null) { // on a reçu un message
 				logger.info("Message received: " + new String(p.getData()));
+				unproxifiedContext.put("ECHOTEST", new Client("ECHO", "EchoCity", "echo@gmail.com"));
+			}
 			else // on a timeout
 				; // si on veut gérer le cas du timeout
 		}
@@ -113,6 +116,14 @@ public class ContextManager extends Thread {
 			e.printStackTrace();
 		}
 		ContextManager.getContext().put("TOTO", new Client("Toto", "TotoCity", "toto@gmail.com"));
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		logger.info("Get TOTO: " + ContextManager.getContext().get("TOTO").toString());
+		logger.info("Get ECHOTEST: " + ContextManager.getContext().get("ECHOTEST").toString());
 	}
 
 }
