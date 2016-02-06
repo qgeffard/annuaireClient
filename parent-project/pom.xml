@@ -63,9 +63,8 @@
 	</dependencies>
 
 	<modules>
-		<module>annuaireService</module>
+		<module>annuaireView</module>
 		<module>contextManager</module>
-    	<module>dynProxy</module>
     	<module>clientEntity</module>
 	</modules>
 </project>
