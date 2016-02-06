@@ -33,8 +33,8 @@ public class ClientManager {
 	}
 	
 
-	public Client delete(Client client) {
-		return context.remove(client.getEmail());
+	public Client delete(String email) {
+		return context.remove(email);
 	}
 	
 	

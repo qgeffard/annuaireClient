@@ -1,8 +1,10 @@
 package org.sales.amd.cc.rest;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -30,22 +32,38 @@ public class ClientRestService {
 	
 	@GET
 	@Produces("application/json")
-	@Path("/{email}")
+	@Path("/email/{email}")
 	public Client getByEmail(@PathParam(value = "email") String email){
 		return manager.getClientByEmail(email);
 	}
 	
 	@POST
-	@Consumes("application/json")
-	public Client createOrUpdate(Client client){
-		return manager.createOrUpdateClient(client);
+	@Path("/create")
+	public Client create(@FormParam("name") String name, @FormParam("entreprise") String entreprise, @FormParam("email") String email){
+		return manager.createOrUpdateClient(new Client(name, entreprise, email));
 	}
 	
 	@POST
-	@Consumes("application/json")
-	public Client delete(Client client){
-		return manager.delete(client);
+	@Path("/update")
+	public Client update(@FormParam("name") String name, @FormParam("entreprise") String entreprise, @FormParam("email") String email){
+		return manager.createOrUpdateClient(new Client(name, entreprise, email));
+	}
+	
+	@POST
+	@Path("/delete")
+	public Client delete(@FormParam("name") String name, @FormParam("entreprise") String entreprise, @FormParam("email") String email){
+		return manager.delete(email);
 	}
 
+//	@GET
+//	@Produces("application/json")
+//	public Collection<Client> getAll(){
+//		
+//		Collection<Client> rsl = new ArrayList<Client>();
+//		rsl.add(new Client("name", "city", "email"));
+//		rsl.add(new Client("name1", "city1", "email1"));
+//		
+//		return rsl;
+//	}
 	
 }
