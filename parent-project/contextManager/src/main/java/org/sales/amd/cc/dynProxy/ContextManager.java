@@ -43,7 +43,7 @@ public class ContextManager extends Thread {
 		while (true) {
 			// HeartBeat si pas fait depuis 2secondes
 			if (Math.abs(lastHB.getTime()-new Date().getTime())/1000 > 2) {
-				send_hello();
+				send_multicast_message(myUUID.toString());
 				lastHB = new Date();
 			}
 			
@@ -62,26 +62,7 @@ public class ContextManager extends Thread {
 		}
 	}
 
-	private void send_hello() {
-		MulticastSocket ms = null;
-		
-		byte[] buf = new byte[256];
-		buf = new String(myUUID.toString()).getBytes();
-		try {
-			InetAddress addr = InetAddress.getByName(new String("224.10.10.1"));
-			ms = new MulticastSocket(4455);
-			ms.joinGroup(addr);
-			DatagramPacket p = new DatagramPacket(buf, buf.length, addr, 4455);
-			logger.info("Sending HeartBeat");
-			ms.send(p);
-			ms.close();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	public static boolean send_transaction(String str) {
+	public static boolean send_multicast_message(String str) {
 		MulticastSocket ms = null;
 		
 		byte[] buf = new byte[256];
@@ -91,7 +72,7 @@ public class ContextManager extends Thread {
 			ms = new MulticastSocket(4455);
 			ms.joinGroup(addr);
 			DatagramPacket p = new DatagramPacket(buf, buf.length, addr, 4455);
-			logger.info("Sending transaction request");
+			logger.info("Sending HeartBeat");
 			ms.send(p);
 			ms.close();
 		} catch (Exception e) {

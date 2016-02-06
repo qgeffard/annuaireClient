@@ -26,7 +26,7 @@ public class ReplicatedMapHandler implements InvocationHandler {
 	        try {
 	            System.out.println("before method " + m.getName());
 	            result = m.invoke(obj, args);
-	            ContextManager.send_transaction(m.getName()+": \"" +args[0]+ "\" => "+args[1]);
+	            ContextManager.send_multicast_message(m.getName()+": \"" +args[0]+ "\" => "+args[1]);
 	        } catch (InvocationTargetException e) {
 	            throw e.getTargetException();
 	        } catch (Exception e) {
